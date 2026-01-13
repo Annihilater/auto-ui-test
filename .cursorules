@@ -1,0 +1,98 @@
+# 提交规范
+
+标准的 Git 提交规范通常由三部分组成：**Header (标题)**、**Body (正文)** 和 **Footer (脚注)**。
+
+---
+
+### 1. 提交格式 (Structure)
+
+```Bash
+<type>(<scope>): <subject>
+// 空行
+[optional body]
+// 空行
+[optional footer(s)]
+```
+
+### 2. Header (标题行)
+
+标题行是必填的，且长度通常建议控制在 **50 到 72 个字符** 之内。
+
+#### **Type (类型)**
+
+必须是以下之一，用以描述本次提交的意图：
+
+- **feat**: 新功能 (feature)
+- **fix**: 修补 bug
+- **docs**: 文档修改 (documentation)
+- **style**: 代码格式修改 (不影响代码运行的变动，如空格、分号等)
+- **refactor**: 重构 (即不是新增功能，也不是修改 bug 的代码变动)
+- **perf**: 性能优化 (performance)
+- **test**: 增加测试或修改测试用例
+- **chore**: 构建过程或辅助工具的变动 (如修改 .gitignore, 升级依赖等)
+- **ci**: 修改 CI 配置、脚本等
+- **build**: 修改影响构建系统或外部依赖的变动 (如 gulp, npm, maven)
+- **revert**: 回退之前的提交
+
+#### **Scope (作用域) - 可选**
+
+用括号说明本次修改的影响范围。例如：`feat(parser): ...` 或 `fix(auth): ...`。
+
+#### **Subject (主题)**
+
+- 使用**祈使句**，且为现在时（例如：使用 `add` 而不是 `added` 或 `adds`）。
+- 首字母不需要大写（根据具体项目风格而定，但通常建议小写）。
+- 结尾不加句号 `.`。
+
+---
+
+### 3. Body (正文) - 可选
+
+详细描述本次改动的动机、背景、以及与旧逻辑的区别。
+
+- 每行建议不超过 **72 个字符**。
+- 也要使用祈使句。
+- 解释“为什么”要这么做，而不是“怎么做”（代码本身已说明了“怎么做”）。
+
+---
+
+### 4. Footer (脚注) - 可选
+
+主要用于两种情况：
+
+1. **不兼容变动 (Breaking Changes)**：
+
+    必须以 `BREAKING CHANGE:` 开头，后面跟一个空格或两个换行，描述变动的理由及迁移方法。在 Header 中也可以在 type 后面加一个 `!`（例如 `feat!: ...`）来快速提醒。
+2. **关联 Issue**：
+
+    引用相关的 Issue 或 PR 编号。例如：`Fixes #123`, `Closes #456`。
+
+---
+
+### 5. 规范示例
+
+**示例 1：新功能（带作用域）**
+
+```text
+feat(lang): add polish language support
+```
+
+**示例 2：修复 Bug 且关联 Issue**
+
+```text
+fix(ui): resolve overlap issue on mobile screens
+
+The alignment of the header items was incorrect on screens smaller than 360px.
+This change adjusts the flexbox properties to ensure wrapping.
+
+Closes #204
+```
+
+**示例 3：重大破坏性变更**
+
+```text
+feat!: remove deprecated analytics API
+
+BREAKING CHANGE: The `v1/analytics` endpoint has been removed. 
+Please migrate to `v2/metrics`.
+```
