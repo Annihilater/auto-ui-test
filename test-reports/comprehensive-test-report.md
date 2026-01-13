@@ -200,4 +200,4 @@
 
 *测试报告生成时间: 2026-01-13*
 *测试执行者: Sisyphus AI Agent*</content>
-<parameter name="filePath">/Users/ziji/github/auto-ui-test/test-reports/comprehensive-test-report.md
+<parameter name="filePath">auto-ui-test/test-reports/comprehensive-test-report.md
